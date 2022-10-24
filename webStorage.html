@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Storage</title>
+</head>
+
+<body>
+    <p>Anda sudah menekan tombol sebanyak <span id="count">0</span>Kali</p>
+    <button id="button">Click Disini!</button>
+
+    <!-- Tombol Untuk menghapus locakStorage -->
+    <button id="clear">Hapus Storage</button>
+
+    <script>
+
+        // PENGGUNAAN sessionStorage di Javascript
+        // const cacheKey = 'NUMBER';
+        // if (typeof (Storage) !== 'undifined') {
+        //     if (sessionStorage.getItem(cacheKey) === 'undifined') {
+        //         sessionStorage.setItem(cacheKey, 0);
+        //     }
+        //     const button = document.querySelector('#button');
+        //     const count = document.querySelector('#count');
+
+        //     button.addEventListener('click', function (event) {
+        //         let number = sessionStorage.getItem(cacheKey);
+        //         number++;
+        //         sessionStorage.setItem(cacheKey, number);
+        //         count.innerText = sessionStorage.getItem(cacheKey);
+        //     });
+        // } else {
+        //     alert('Browser tidak mendukung!!!');
+        // }
+
+
+        // PENGGUNAAN localStorage di Javascript
+        const cacheKey = 'NUMBER';
+        if (typeof (Storage) !== 'undifined') {
+            if (localStorage.getItem(cacheKey) === 'undifined') {
+                localStorage.setItem(cacheKey, 0);
+            }
+            const button = document.querySelector('#button');
+            const count = document.querySelector('#count');
+            const clearButton = document.querySelector('#clear');
+            const removeAll = document.querySelector('#clearAll');
+
+
+            button.addEventListener('click', function (event) {
+                let number = localStorage.getItem(cacheKey);
+                number++;
+                localStorage.setItem(cacheKey, number);
+                count.innerText = localStorage.getItem(cacheKey);
+            });
+
+            clearButton.addEventListener('click', function (event) {
+                localStorage.removeItem(cacheKey);
+                count.innerText = '0';
+            });
+
+            removeAll.addEventListener('click', function (event) {
+                localStorage.clear();
+            });
+
+
+        } else {
+            alert('Browser tidak mendukung!!!');
+        }
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
